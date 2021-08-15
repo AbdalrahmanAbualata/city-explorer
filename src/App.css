@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+/* #abd{
+  
+} */
+
+body{
+  width: 100%;
+}
+
+#card{
+  border-radius: 15px;
+  margin-left: 30%;
+  box-shadow: rgb(9, 10, 10) 0px 3px 3px;
+  margin-bottom: 20%;
+}
+#dd{
+  border-radius: 15px;
+  border: black solid 2px;
+}
+#bb{padding: 20px;
+  text-align: center;
+  margin-left: 40%;
+  width: 21%;
+}
+#bb h2{
+  margin: 5px;
+}
