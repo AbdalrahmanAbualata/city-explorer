@@ -3,6 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card} from 'react-bootstrap/';
 import './App.css';
+import Weather from './Weather';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +12,9 @@ class App extends React.Component {
       searchCity: '',
       showData: false,
       mapDataS: "",
-      key: process.env.REACT_APP_LOCATIONIQ_KEY
+      key: process.env.REACT_APP_LOCATIONIQ_KEY,
+      wetherData:[],
+      wetherDataShow:true
     }
   }
 
@@ -22,7 +25,7 @@ class App extends React.Component {
       searchCity: e.target.city.value
     })
 
-    console.log('rrrrrrrrrrrrr', process.env.REACT_APP_LOCATIONIQ_KEY)
+    // console.log('rrrrrrrrrrrrr', process.env.REACT_APP_LOCATIONIQ_KEY)
     let locURL = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.searchCity}&format=json`;
 
     let resultData = await axios.get(locURL)
@@ -32,10 +35,39 @@ class App extends React.Component {
 
       showData: true
     })
+ // localhost:5001/weather?cityName=seattle
+//  let wetherDataResult = await axios.get(`${process.env.REACT_APP_SERVER_LINK}/weather?cityName=${this.state.searchCity}`)
+//  console.log(wetherDataResult);
+//  await this.setState({
 
-    console.log('aaaaaaaa', this.state.cityData)
+//   wetherData : wetherDataResult.data,
+//  })
+ try {
+  let wetherDataResult = await axios.get(`${process.env.REACT_APP_SERVER_LINK}/weather?cityName=${this.state.searchCity}`)
+  console.log(wetherDataResult);
 
-  }
+  wetherDataResult ? this.setState({
+     wetherData : wetherDataResult.data,
+     wetherDataShow:true,
+  }) : this.setState({
+    wetherData: [],
+    wetherDataShow:false
+  })
+
+} catch (error) {
+  this.setState({
+    wetherData: [],
+    wetherDataShow:false
+    
+  })
+  console.log(error);
+  alert("no weather data for this city plz try (seattle ,paris, amman)" )
+}
+
+}
+
+
+
 
   render() {
     return (
@@ -60,9 +92,20 @@ class App extends React.Component {
           <img  id="dd" style={{ marginLeft:"10%",width
           :"80%"}} alt="city" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=12`}  />
           </Card.Body>
+          { this.state.wetherDataShow   &&  this.state.wetherData.map((item,indx)=>{
+
+console.log(item);
+            return( <Weather key={indx} Date={item.date} description={item.descreption}/>);//description =descreption*/
+        })
+        
+      }
         </Card>
      
           }
+            
+         
+          
+         
           
         </>
 
