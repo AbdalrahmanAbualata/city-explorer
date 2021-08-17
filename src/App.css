@@ -48,7 +48,8 @@ body{
   border-radius: 15px;
   margin-left: 30%;
   box-shadow: rgb(9, 10, 10) 0px 3px 3px;
-  margin-bottom: 20%;
+  margin-bottom: 5%;
+  
 }
 #dd{
   border-radius: 15px;
@@ -61,4 +62,15 @@ body{
 }
 #bb h2{
   margin: 5px;
+}
+#main{
+  border-radius: 10px;
+  border-radius: 10px;
+  /* display: inline-block; */
+  flex: auto;
+  box-shadow: rgb(27, 28, 29) 0px 3px 5px;
+  margin-left: 2.5%;
+  
+
+
 }

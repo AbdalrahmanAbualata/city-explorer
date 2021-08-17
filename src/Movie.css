@@ -1,0 +1,22 @@
+*{
+box-sizing: border-box;
+}
+.apples{
+    
+    border-radius: 10px;
+    display: inline-block;
+    margin: 5px;
+    flex: auto;
+    overflow: auto;
+    box-shadow: rgb(32, 44, 65) 0px 3px 5px;
+    margin-top: 30px;
+}
+#favorites{
+    height: 100px;
+    overflow: scroll;
+    font-weight: 600;
+}
+
+h3{
+    font-size: large;
+}
