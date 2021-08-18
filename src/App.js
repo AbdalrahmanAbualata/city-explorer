@@ -3,8 +3,9 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card } from 'react-bootstrap/';
 import './App.css';
-import Weather from './Weather';
-import Movie from './Movie';
+import Weather from './components/Weather';
+import Movie from './components/Movie';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -120,8 +121,8 @@ this.getMovies();
             </Card.Body>
             {this.state.wetherDataShow && this.state.wetherData.map((item, indx) => {
 
-
-              return (<Weather key={indx} Date={item.date} description={item.descreption} />);//description =descreption*/
+                     
+              return (<Weather  key={indx} Date={item.date} description={item.descreption} />);//description =descreption*/
             })
 
             }
@@ -131,8 +132,8 @@ this.getMovies();
         <div id="main" style={{ width: '95%',alignContent:"space-evenly"}}>
         {this.state.movieDataShow && this.state.movieData.map((movie, indx) => {
 
-
           return (<Movie key={indx} avgVote={movie.avgVote} overview={movie.overview}  date={movie.date}   src={movie.src}  title={movie.title}  vote={movie.vote}/>);
+
         })
 
         }
